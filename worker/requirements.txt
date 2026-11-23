@@ -1,0 +1,16 @@
+bpy~=4.5.0
+fastapi
+uvicorn[standard]
+httpx
+pydantic
+pydantic-settings
+shapely>=2
+trimesh
+mapbox-earcut
+numpy
+pvlib
+timezonefinder
+pillow
+pytest
+pytest-asyncio
+respx
