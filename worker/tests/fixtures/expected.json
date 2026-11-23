@@ -1,0 +1,23 @@
+{
+  "campus": {
+    "lat": 13.0185,
+    "lon": 77.5650,
+    "buildings_count": 5,
+    "host_expected": "way/1001",
+    "expected_sun_hours_today": 3.5
+  },
+  "residential": {
+    "lat": 12.9780,
+    "lon": 77.6400,
+    "buildings_count": 4,
+    "host_expected": "way/2001",
+    "expected_sun_hours_today": 4.0
+  },
+  "open_area": {
+    "lat": 12.9750,
+    "lon": 77.5920,
+    "buildings_count": 1,
+    "host_expected": null,
+    "expected_sun_hours_today": 9.5
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API (Dhoop fixture)",
+  "meta": {
+    "name": "residential",
+    "lat": 12.9780,
+    "lon": 77.6400,
+    "description": "Dense residential neighborhood with apartments and a multipolygon apartment complex with courtyard"
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 2001,
+      "tags": {
+        "building": "apartments",
+        "name": "Shubham Apts",
+        "building:levels": "4"
+      },
+      "geometry": [
+        {"lat": 12.9778, "lon": 77.6398},
+        {"lat": 12.9778, "lon": 77.6402},
+        {"lat": 12.9782, "lon": 77.6402},
+        {"lat": 12.9782, "lon": 77.6398},
+        {"lat": 12.9778, "lon": 77.6398}
+      ]
+    },
+    {
+      "type": "way",
+      "id": 2002,
+      "tags": {
+        "building": "residential",
+        "building:levels": "3"
+      },
+      "geometry": [
+        {"lat": 12.9784, "lon": 77.6397},
+        {"lat": 12.9784, "lon": 77.6401},
+        {"lat": 12.9788, "lon": 77.6401},
+        {"lat": 12.9788, "lon": 77.6397},
+        {"lat": 12.9784, "lon": 77.6397}
+      ]
+    },
+    {
+      "type": "way",
+      "id": 2003,
+      "tags": {
+        "building": "residential"
+      },
+      "geometry": [
+        {"lat": 12.9783, "lon": 77.6404},
+        {"lat": 12.9783, "lon": 77.6408},
+        {"lat": 12.9787, "lon": 77.6408},
+        {"lat": 12.9787, "lon": 77.6404},
+        {"lat": 12.9783, "lon": 77.6404}
+      ]
+    },
+    {
+      "type": "relation",
+      "id": 2100,
+      "tags": {
+        "building": "apartments",
+        "name": "Greenview Courtyard Towers",
+        "type": "multipolygon",
+        "height": "24.0",
+        "building:levels": "8"
+      },
+      "members": [
+        {
+          "type": "way",
+          "ref": 2201,
+          "role": "outer",
+          "geometry": [
+            {"lat": 12.9770, "lon": 77.6390},
+            {"lat": 12.9770, "lon": 77.6396},
+            {"lat": 12.9776, "lon": 77.6396}
+          ]
+        },
+        {
+          "type": "way",
+          "ref": 2202,
+          "role": "outer",
+          "geometry": [
+            {"lat": 12.9776, "lon": 77.6396},
+            {"lat": 12.9776, "lon": 77.6390},
+            {"lat": 12.9770, "lon": 77.6390}
+          ]
+        },
+        {
+          "type": "way",
+          "ref": 2203,
+          "role": "inner",
+          "geometry": [
+            {"lat": 12.9772, "lon": 77.6392},
+            {"lat": 12.9772, "lon": 77.6394},
+            {"lat": 12.9774, "lon": 77.6394},
+            {"lat": 12.9774, "lon": 77.6392},
+            {"lat": 12.9772, "lon": 77.6392}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API (Dhoop fixture)",
+  "meta": {
+    "name": "open_area",
+    "lat": 12.9750,
+    "lon": 77.5920,
+    "description": "Public park / open field with distant pavilion, no immediate host building"
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 3001,
+      "tags": {
+        "building": "pavilion",
+        "name": "Bandstand Pavilion",
+        "height": "6.0"
+      },
+      "geometry": [
+        {"lat": 12.9755, "lon": 77.5925},
+        {"lat": 12.9755, "lon": 77.5927},
+        {"lat": 12.9757, "lon": 77.5927},
+        {"lat": 12.9757, "lon": 77.5925},
+        {"lat": 12.9755, "lon": 77.5925}
+      ]
+    }
+  ]
+}

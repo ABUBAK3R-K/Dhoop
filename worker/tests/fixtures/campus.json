@@ -1,0 +1,94 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API (Dhoop fixture)",
+  "meta": {
+    "name": "campus",
+    "lat": 13.0185,
+    "lon": 77.5650,
+    "description": "University campus with departmental blocks, library, and faculty buildings"
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 1001,
+      "tags": {
+        "building": "university",
+        "name": "Department of Computer Science",
+        "height": "16.5",
+        "building:levels": "4"
+      },
+      "geometry": [
+        {"lat": 13.0184, "lon": 77.5648},
+        {"lat": 13.0184, "lon": 77.5652},
+        {"lat": 13.0188, "lon": 77.5652},
+        {"lat": 13.0188, "lon": 77.5648},
+        {"lat": 13.0184, "lon": 77.5648}
+      ]
+    },
+    {
+      "type": "way",
+      "id": 1002,
+      "tags": {
+        "building": "university",
+        "name": "Main Library",
+        "height": "14.0",
+        "building:levels": "3"
+      },
+      "geometry": [
+        {"lat": 13.0190, "lon": 77.5646},
+        {"lat": 13.0190, "lon": 77.5651},
+        {"lat": 13.0194, "lon": 77.5651},
+        {"lat": 13.0194, "lon": 77.5646},
+        {"lat": 13.0190, "lon": 77.5646}
+      ]
+    },
+    {
+      "type": "way",
+      "id": 1003,
+      "tags": {
+        "building": "university",
+        "name": "Lecture Hall Complex",
+        "building:levels": "3"
+      },
+      "geometry": [
+        {"lat": 13.0182, "lon": 77.5655},
+        {"lat": 13.0182, "lon": 77.5660},
+        {"lat": 13.0187, "lon": 77.5660},
+        {"lat": 13.0187, "lon": 77.5655},
+        {"lat": 13.0182, "lon": 77.5655}
+      ]
+    },
+    {
+      "type": "way",
+      "id": 1004,
+      "tags": {
+        "building": "yes",
+        "name": "Administration Block"
+      },
+      "geometry": [
+        {"lat": 13.0177, "lon": 77.5645},
+        {"lat": 13.0177, "lon": 77.5650},
+        {"lat": 13.0181, "lon": 77.5650},
+        {"lat": 13.0181, "lon": 77.5645},
+        {"lat": 13.0177, "lon": 77.5645}
+      ]
+    },
+    {
+      "type": "way",
+      "id": 1005,
+      "tags": {
+        "building": "dormitory",
+        "name": "Hostel Block A",
+        "height": "18.0",
+        "building:levels": "6"
+      },
+      "geometry": [
+        {"lat": 13.0175, "lon": 77.5654},
+        {"lat": 13.0175, "lon": 77.5659},
+        {"lat": 13.0179, "lon": 77.5659},
+        {"lat": 13.0179, "lon": 77.5654},
+        {"lat": 13.0175, "lon": 77.5654}
+      ]
+    }
+  ]
+}
