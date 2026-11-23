@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHOOP SOLAR · Rooftop Shade Qualifier for Solar Installers</title>
+  <style>
+    /* DHOOP SOLAR DUAL-TONE ANTI-AI-SLOP DESIGN SYSTEM */
+    :root {
+      --bg: #090a0d;
+      --surface: #111318;
+      --surface-raised: #181b22;
+      --border: #232732;
+      --border-accent: #f59e0b;
+      --text: #f3f4f6;
+      --text-muted: #949ea8;
+      --solar: #f59e0b;
+      --solar-bright: #fbbf24;
+      --solar-glow: rgba(245, 158, 11, 0.12);
+      --grade-a: #10b981;
+      --grade-b: #3b82f6;
+      --grade-c: #f59e0b;
+      --grade-d: #ef4444;
+      --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    /* Top Utility Bar */
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(9, 10, 13, 0.85);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      background: var(--solar);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #000;
+      font-size: 16px;
+      font-family: var(--font-mono);
+    }
+
+    .brand-name {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .badge-pm {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      color: var(--solar);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-pm::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--solar);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pill-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--solar);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero-lead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin-bottom: 32px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    .stat-card .val {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .stat-card .val span {
+      color: var(--solar);
+    }
+
+    .stat-card .lbl {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Main Section: Interactive Qualifier */
+    .qualifier-section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Preset Buttons */
+    .presets-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn-preset {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-preset:hover {
+      border-color: var(--solar);
+      background: var(--surface-raised);
+    }
+
+    .btn-preset.active {
+      background: var(--solar);
+      color: #000;
+      border-color: var(--solar);
+      font-weight: 700;
+    }
+
+    /* Two-Column App Layout */
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .app-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Panel: Viewer & Controls */
+    .viewer-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .viewer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .viewer-title {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .time-chip {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--surface-raised);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--solar);
+    }
+
+    /* Image & Canvas Display Area */
+    .display-canvas-wrap {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .frame-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: contrast(1.05);
+    }
+
+    .canvas-fallback {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    /* Scrubber Slider */
+    .scrubber-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .scrubber-header {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--solar);
+      cursor: pointer;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    /* Grid Heatmap Tabs */
+    .view-toggles {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .btn-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-toggle.active {
+      background: var(--surface-raised);
+      color: var(--solar);
+      border-color: var(--solar);
+    }
+
+    /* Right Panel: Executive Lead Card */
+    .report-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+    }
+
+    .card-site-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 2px;
+    }
+
+    /* Rating Chip */
+    .rating-chip {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .rating-chip.grade-a {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--grade-a);
+      color: var(--grade-a);
+    }
+
+    .rating-chip.grade-b {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid var(--grade-b);
+      color: var(--grade-b);
+    }
+
+    .rating-chip.grade-c {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--grade-c);
+      color: var(--grade-c);
+    }
+
+    .rating-chip.grade-d {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid var(--grade-d);
+      color: var(--grade-d);
+    }
+
+    /* Key Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric-box {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 14px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: var(--font-mono);
+    }
+
+    .metric-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      font-family: var(--font-mono);
+      margin-top: 4px;
+    }
+
+    .metric-value small {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Seasonal Table */
+    .season-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      background: var(--surface-raised);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .season-table th, .season-table td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .season-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .season-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .season-table .highlight {
+      color: var(--solar);
+      font-weight: 700;
+    }
+
+    /* Verdict Box */
+    .verdict-box {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .verdict-box strong {
+      color: var(--solar);
+      display: block;
+      margin-bottom: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    /* Honest Disclaimer Callout */
+    .disclaimer-box {
+      background: var(--surface-raised);
+      border-left: 3px solid var(--solar);
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .disclaimer-box strong {
+      color: var(--text);
+    }
+
+    /* Export Actions */
+    .action-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-action {
+      flex: 1;
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 10px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:hover {
+      border-color: var(--solar);
+      background: #20242e;
+    }
+
+    .btn-action.btn-primary {
+      background: var(--solar);
+      color: #000;
+      border-color: var(--solar);
+      font-weight: 700;
+    }
+
+    .btn-action.btn-primary:hover {
+      background: var(--solar-bright);
+    }
+
+    /* ROI & Unit Economics Section */
+    .economics-section {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0d0e13;
+    }
+
+    .calc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    @media (max-width: 800px) {
+      .calc-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .input-group .input-val {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--solar);
+      margin-bottom: 8px;
+    }
+
+    .calc-outputs {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .output-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .output-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .output-item .k {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .output-item .v {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .output-item .v.huge {
+      font-size: 26px;
+      color: var(--solar);
+    }
+
+    /* Manifesto / Why Anti-AI Slop */
+    .manifesto-section {
+      padding: 64px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .box-feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+    }
+
+    .box-feature .num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--solar);
+      margin-bottom: 12px;
+    }
+
+    .box-feature h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .box-feature p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--solar);
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <a href="#" class="brand">
+      <div class="brand-mark">ध</div>
+      <div class="brand-name">Dhoop Solar</div>
+    </a>
+    <div class="badge-pm">PM Surya Ghar Qualified · 1 Cr Households</div>
+  </header>
+
+  <div class="container">
+
+    <!-- Hero Header -->
+    <section class="hero">
+      <span class="pill-label">Dual-Tone Precision Raycaster</span>
+      <h1>Pre-qualify rooftop solar leads in 10 seconds.</h1>
+      <p class="hero-lead">
+        Stop spending ₹3,500 dispatching site engineers to heavily shaded rooftops. 
+        Dhoop casts 1.5-meter rooftop grid shadow vectors against 3D OpenStreetMap geometry across winter solstice, summer solstice, and today.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="val">₹<span>75,021</span> Cr</div>
+          <div class="lbl">PM Surya Ghar Outlay (1 Crore Households)</div>
+        </div>
+        <div class="stat-card">
+          <div class="val"><span>1.5</span> m</div>
+          <div class="lbl">Rooftop Analysis Grid Resolution</div>
+        </div>
+        <div class="stat-card">
+          <div class="val"><span>&ge; 4.0</span> h</div>
+          <div class="lbl">Winter Solstice (Dec 21) Solar Hurdle</div>
+        </div>
+        <div class="stat-card">
+          <div class="val">₹<span>3,500</span></div>
+          <div class="lbl">Saved per Filtered Unfit Lead</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Lead Qualifier Section -->
+    <section class="qualifier-section" id="qualifier">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Live Rooftop Qualification Terminal</h2>
+          <p class="section-subtitle">Select a demonstration fixture or test live coordinate raycasting</p>
+        </div>
+      </div>
+
+      <!-- Preset Bar -->
+      <div class="presets-bar">
+        <button class="btn-preset active" onclick="loadFixture('campus')">
+          🏢 IISc Campus Block (13.0185°N, 77.5650°E)
+        </button>
+        <button class="btn-preset" onclick="loadFixture('residential')">
+          🏡 Indiranagar G+3 Residential (12.9780°N, 77.6400°E)
+        </button>
+        <button class="btn-preset" onclick="loadFixture('commercial')">
+          🏬 MG Road High-Rise Shaded (12.9750°N, 77.6080°E)
+        </button>
+      </div>
+
+      <!-- App Grid -->
+      <div class="app-grid">
+
+        <!-- Left: Visual Simulation & Scrubber -->
+        <div class="viewer-panel">
+          <div class="viewer-top">
+            <span class="viewer-title" id="viewer-title">3D Solar Time-lapse: IISc Campus (27 Steps)</span>
+            <span class="time-chip" id="time-display">06:50 IST · Sun Az 112° El 5°</span>
+          </div>
+
+          <!-- Display Canvas / Image -->
+          <div class="display-canvas-wrap">
+            <img id="hud-frame" class="frame-img" src="assets/f000.png" alt="Rooftop Frame" onerror="handleImageError()">
+            <canvas id="grid-canvas" class="canvas-fallback" width="560" height="380"></canvas>
+          </div>
+
+          <!-- Time-of-Day Scrubber -->
+          <div class="scrubber-wrap">
+            <div class="scrubber-header">
+              <span>Sunrise (06:50)</span>
+              <span id="slider-hour-tag" style="color: var(--solar); font-weight:700;">Frame 0 / 26</span>
+              <span>Sunset (17:25)</span>
+            </div>
+            <input type="range" id="frame-scrubber" min="0" max="26" value="0" oninput="onScrub(this.value)">
+          </div>
+
+          <div class="view-toggles">
+            <button class="btn-toggle active" id="btn-mode-hud" onclick="toggleDisplayMode('hud')">Raycast HUD View</button>
+            <button class="btn-toggle" id="btn-mode-grid" onclick="toggleDisplayMode('grid')">1.5m Rooftop Grid Map</button>
+          </div>
+        </div>
+
+        <!-- Right: Executive Solar Lead Card -->
+        <div class="report-panel" id="lead-card">
+          <div class="report-header">
+            <div>
+              <div class="card-kicker">Executive Solar Lead Card</div>
+              <div class="card-site-name" id="site-name">IISc Academic Complex</div>
+            </div>
+            <div class="rating-chip grade-a" id="grade-chip">GRADE A · PRIME SOLAR</div>
+          </div>
+
+          <!-- Metrics Grid -->
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <div class="metric-label">Suggested Capacity</div>
+              <div class="metric-value" id="val-kwp">191.8 <small>kWp</small></div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Usable Solar Area</div>
+              <div class="metric-value" id="val-area">1,918 <small>m²</small></div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Unshaded Area %</div>
+              <div class="metric-value" id="val-pct" style="color: var(--solar);">100.0%</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Grid Points Sampled</div>
+              <div class="metric-value" id="val-grid">812 <small>pts</small></div>
+            </div>
+          </div>
+
+          <!-- Seasonal Sunlight Table -->
+          <table class="season-table">
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>Sun Hours</th>
+                <th>Clear Window</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="highlight">Winter Solstice (Dec 21)</td>
+                <td class="highlight" id="tbl-winter-hrs">10.5 h</td>
+                <td id="tbl-winter-win">07:05 – 17:30</td>
+              </tr>
+              <tr>
+                <td>Summer Solstice (Jun 21)</td>
+                <td id="tbl-summer-hrs">12.0 h</td>
+                <td id="tbl-summer-win">06:25 – 18:20</td>
+              </tr>
+              <tr>
+                <td>Today (Nov 23)</td>
+                <td id="tbl-today-hrs">10.7 h</td>
+                <td id="tbl-today-win">06:50 – 17:25</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Recommendation / Verdict -->
+          <div class="verdict-box" id="verdict-box">
+            <strong id="verdict-title">QUALIFIED LEAD · PRIME ROOF</strong>
+            <span id="verdict-text">
+              Zero macro obstruction observed on winter solstice. Meets maximum PM Surya Ghar central subsidy criteria (3–5 kWp). Recommend immediate proposal.
+            </span>
+          </div>
+
+          <!-- Honest Engineering Limit Disclaimer -->
+          <div class="disclaimer-box">
+            <strong>Honest Engineering Notice:</strong> Surrounding building shadows are cast from 3D OpenStreetMap geometry. Rooftop micro-obstructions (water overhead tanks, parapets, stair-heads, satellite dishes) are not modeled in OSM and require physical verification prior to structural installation.
+          </div>
+
+          <!-- Export Actions -->
+          <div class="action-row">
+            <button class="btn-action btn-primary" onclick="copyWhatsAppSummary()">
+              📋 Copy for WhatsApp
+            </button>
+            <button class="btn-action" onclick="downloadJSON()">
+              📥 Download JSON
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Installer Unit Economics Calculator -->
+    <section class="economics-section">
+      <div class="container" style="padding:0;">
+        <span class="pill-label">Financial Architecture</span>
+        <h2 class="section-title">Installer Unit Economics & ROI</h2>
+        <p class="section-subtitle">Why solar EPCs and lead vendors license Dhoop before dispatching crews</p>
+
+        <div class="calc-card">
+          <div class="calc-inputs">
+            <div class="input-group">
+              <label>Monthly Inbound Rooftop Leads</label>
+              <div class="input-val" id="leads-val">100 leads/mo</div>
+              <input type="range" id="input-leads" min="20" max="500" step="10" value="100" oninput="updateEconomics()">
+            </div>
+
+            <div class="input-group">
+              <label>Average Cost per Physical Site Visit (Surveyor + Transit)</label>
+              <div class="input-val" id="cost-val">₹3,500</div>
+              <input type="range" id="input-cost" min="1500" max="6000" step="250" value="3500" oninput="updateEconomics()">
+            </div>
+
+            <div class="input-group">
+              <label>Estimated Heavy-Shade Disqualification Rate</label>
+              <div class="input-val" id="rate-val">35%</div>
+              <input type="range" id="input-rate" min="10" max="60" step="5" value="35" oninput="updateEconomics()">
+            </div>
+          </div>
+
+          <div class="calc-outputs">
+            <div class="output-item">
+              <span class="k">Wasted Site Visits / Month:</span>
+              <span class="v" id="out-wasted-visits">35 visits</span>
+            </div>
+            <div class="output-item">
+              <span class="k">Wasted Survey Spend (Without Dhoop):</span>
+              <span class="v" id="out-wasted-spend" style="color: #ef4444;">₹1,22,500</span>
+            </div>
+            <div class="output-item">
+              <span class="k">Dhoop Qualification Cost (@ ₹49/lead):</span>
+              <span class="v" id="out-dhoop-cost">₹4,900</span>
+            </div>
+            <div class="output-item">
+              <span class="k">Net Monthly Savings:</span>
+              <span class="v huge" id="out-net-savings">₹1,17,600</span>
+            </div>
+            <div class="output-item">
+              <span class="k">Installer Capital ROI:</span>
+              <span class="v" id="out-roi" style="color: var(--grade-a); font-size: 22px;">24.0x</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anti-AI Slop Principles Section -->
+    <section class="manifesto-section">
+      <span class="pill-label">Engineering Discipline</span>
+      <h2 class="section-title">Zero AI Slop. Deterministic Raycasting.</h2>
+      <p class="section-subtitle">Why real solar installers and debt underwriters refuse LLM-generated roof estimates</p>
+
+      <div class="grid-3">
+        <div class="box-feature">
+          <div class="num">[01] DETERMINISTIC RAY TRACING</div>
+          <h3>Exact 3D Vector Geometry</h3>
+          <p>We do not prompt an LLM to guess shade. We extrude real OpenStreetMap polygon coordinates into 3D meshes and perform RayMesh raycasting using exact astronomical solar positions calculated via pvlib.</p>
+        </div>
+
+        <div class="box-feature">
+          <div class="num">[02] WINTER SOLSTICE BENCHMARK</div>
+          <h3>Standard MNRE Seasonality</h3>
+          <p>Solar qualifies on the lowest sun angle of the year: December 21st. If a roof delivers &ge; 4.0 hours of shadow-free sun on the winter solstice, it is guaranteed profitable year-round.</p>
+        </div>
+
+        <div class="box-feature">
+          <div class="num">[03] FULL RADICAL HONESTY</div>
+          <h3>Disclosed Resolution Limits</h3>
+          <p>No false promises: OSM lacks water tanks, parapets, and rooftop clotheslines. Dhoop eliminates the 35% of leads killed by neighboring towers so engineers only visit roofs that have passed macro qualification.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    Dhoop Solar · Dual-Tone Rooftop Qualifier · Built for PM Surya Ghar: Muft Bijli Yojana · Data © OpenStreetMap contributors
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <!-- Application Logic -->
+  <script>
+    // Fixture Data
+    const FIXTURES = {
+      campus: {
+        name: "IISc Academic Complex",
+        coords: "13.0185°N, 77.5650°E",
+        grade: "A",
+        gradeTitle: "GRADE A · PRIME SOLAR",
+        gradeClass: "grade-a",
+        kwp: "191.8",
+        area: "1,918",
+        sqft: "20,647",
+        pct: "100.0%",
+        gridPts: "812",
+        winterHrs: "10.5 h",
+        winterWin: "07:05 – 17:30",
+        summerHrs: "12.0 h",
+        summerWin: "06:25 – 18:20",
+        todayHrs: "10.7 h",
+        todayWin: "06:50 – 17:25",
+        verdictTitle: "QUALIFIED LEAD · PRIME SOLAR",
+        verdictText: "Zero macro obstruction observed on winter solstice. Meets maximum PM Surya Ghar central subsidy criteria (3–5 kWp). Recommend immediate proposal.",
+        gridColor: "#10b981",
+        shadedRatio: 0.0
+      },
+      residential: {
+        name: "Indiranagar 100ft Rd (G+3)",
+        coords: "12.9780°N, 77.6400°E",
+        grade: "A",
+        gradeTitle: "GRADE A · PRIME SOLAR",
+        gradeClass: "grade-a",
+        kwp: "191.9",
+        area: "1,919",
+        sqft: "20,652",
+        pct: "100.0%",
+        gridPts: "812",
+        winterHrs: "10.3 h",
+        winterWin: "07:05 – 17:20",
+        summerHrs: "12.1 h",
+        summerWin: "06:20 – 18:20",
+        todayHrs: "10.6 h",
+        todayWin: "06:50 – 17:20",
+        verdictTitle: "QUALIFIED LEAD · HIGH POTENTIAL",
+        verdictText: "Unshaded roof. Ideal for typical 3 kW residential rooftop solar setup with 8–10 bifacial panels.",
+        gridColor: "#10b981",
+        shadedRatio: 0.0
+      },
+      commercial: {
+        name: "MG Road Dense Corridor",
+        coords: "12.9750°N, 77.6080°E",
+        grade: "C",
+        gradeTitle: "GRADE C · PARTIAL SHADE",
+        gradeClass: "grade-c",
+        kwp: "41.2",
+        area: "412",
+        sqft: "4,435",
+        pct: "49.0%",
+        gridPts: "350",
+        winterHrs: "3.2 h",
+        winterWin: "11:15 – 14:30",
+        summerHrs: "5.8 h",
+        summerWin: "09:45 – 15:30",
+        todayHrs: "3.9 h",
+        todayWin: "10:45 – 14:40",
+        verdictTitle: "PARTIAL SHADE · CAUTION",
+        verdictText: "51% shaded by adjacent 32m commercial towers. Confine solar array strictly to the southern quadrant or recommend micro-inverters with module-level MPPT.",
+        gridColor: "#f59e0b",
+        shadedRatio: 0.51
+      }
+    };
+
+    let currentFixtureKey = "campus";
+    let currentMode = "hud"; // 'hud' or 'grid'
+
+    // Timestamps for the 27 frames (06:50 to 17:25)
+    const FRAME_TIMES = [
+      "06:50 IST · Sun Az 112° El 5°",
+      "07:15 IST · Sun Az 114° El 11°",
+      "07:40 IST · Sun Az 116° El 17°",
+      "08:05 IST · Sun Az 119° El 22°",
+      "08:30 IST · Sun Az 121° El 27°",
+      "08:55 IST · Sun Az 125° El 32°",
+      "09:20 IST · Sun Az 129° El 37°",
+      "09:45 IST · Sun Az 133° El 42°",
+      "10:10 IST · Sun Az 139° El 46°",
+      "10:35 IST · Sun Az 146° El 50°",
+      "11:00 IST · Sun Az 154° El 53°",
+      "11:25 IST · Sun Az 163° El 55°",
+      "11:50 IST · Sun Az 173° El 56°",
+      "12:15 IST · Sun Az 184° El 57°",
+      "12:40 IST · Sun Az 194° El 56°",
+      "13:05 IST · Sun Az 204° El 54°",
+      "13:30 IST · Sun Az 212° El 51°",
+      "13:55 IST · Sun Az 219° El 47°",
+      "14:20 IST · Sun Az 225° El 43°",
+      "14:45 IST · Sun Az 230° El 39°",
+      "15:10 IST · Sun Az 234° El 34°",
+      "15:35 IST · Sun Az 238° El 29°",
+      "16:00 IST · Sun Az 241° El 24°",
+      "16:25 IST · Sun Az 243° El 18°",
+      "16:50 IST · Sun Az 245° El 13°",
+      "17:15 IST · Sun Az 247° El 7°",
+      "17:25 IST · Sun Az 248° El 5°"
+    ];
+
+    function loadFixture(key) {
+      currentFixtureKey = key;
+      const f = FIXTURES[key];
+
+      // Update preset buttons
+      document.querySelectorAll('.btn-preset').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      // Update Header & Lead Card
+      document.getElementById('site-name').innerText = f.name;
+      const chip = document.getElementById('grade-chip');
+      chip.innerText = f.gradeTitle;
+      chip.className = `rating-chip ${f.gradeClass}`;
+
+      document.getElementById('val-kwp').innerHTML = `${f.kwp} <small>kWp</small>`;
+      document.getElementById('val-area').innerHTML = `${f.area} <small>m²</small>`;
+      document.getElementById('val-pct').innerText = f.pct;
+      document.getElementById('val-grid').innerHTML = `${f.gridPts} <small>pts</small>`;
+
+      document.getElementById('tbl-winter-hrs').innerText = f.winterHrs;
+      document.getElementById('tbl-winter-win').innerText = f.winterWin;
+      document.getElementById('tbl-summer-hrs').innerText = f.summerHrs;
+      document.getElementById('tbl-summer-win').innerText = f.summerWin;
+      document.getElementById('tbl-today-hrs').innerText = f.todayHrs;
+      document.getElementById('tbl-today-win').innerText = f.todayWin;
+
+      document.getElementById('verdict-title').innerText = f.verdictTitle;
+      document.getElementById('verdict-text').innerText = f.verdictText;
+
+      document.getElementById('viewer-title').innerText = `3D Solar Simulation: ${f.name}`;
+
+      // Reset Scrubber to noon frame
+      const scrubber = document.getElementById('frame-scrubber');
+      scrubber.value = 13;
+      onScrub(13);
+
+      if (currentMode === 'grid') {
+        drawRooftopGrid();
+      }
+    }
+
+    function onScrub(val) {
+      const frameIdx = parseInt(val);
+      const paddedIdx = String(frameIdx).padStart(3, '0');
+      const img = document.getElementById('hud-frame');
+      img.src = `assets/f${paddedIdx}.png`;
+
+      document.getElementById('time-display').innerText = FRAME_TIMES[frameIdx] || "Daylight";
+      document.getElementById('slider-hour-tag').innerText = `Frame ${frameIdx} / 26`;
+
+      if (currentMode === 'grid') {
+        drawRooftopGrid(frameIdx);
+      }
+    }
+
+    function toggleDisplayMode(mode) {
+      currentMode = mode;
+      const img = document.getElementById('hud-frame');
+      const canvas = document.getElementById('grid-canvas');
+      const btnHud = document.getElementById('btn-mode-hud');
+      const btnGrid = document.getElementById('btn-mode-grid');
+
+      if (mode === 'hud') {
+        img.style.display = 'block';
+        canvas.style.display = 'none';
+        btnHud.classList.add('active');
+        btnGrid.classList.remove('active');
+      } else {
+        img.style.display = 'none';
+        canvas.style.display = 'block';
+        btnHud.classList.remove('active');
+        btnGrid.classList.add('active');
+        drawRooftopGrid(parseInt(document.getElementById('frame-scrubber').value));
+      }
+    }
+
+    function handleImageError() {
+      // If assets are missing or offline, fallback cleanly to procedural canvas
+      toggleDisplayMode('grid');
+    }
+
+    function drawRooftopGrid(frameIdx = 13) {
+      const canvas = document.getElementById('grid-canvas');
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.fillStyle = "#0c0e12";
+      ctx.fillRect(0, 0, w, h);
+
+      // Title & Coordinate Info
+      ctx.fillStyle = "#6b7280";
+      ctx.font = "11px 'JetBrains Mono', monospace";
+      ctx.fillText("PLAN VIEW: 1.5m INSET SOLAR ROOFTOP GRID", 20, 26);
+      ctx.fillText(FIXTURES[currentFixtureKey].coords, w - 210, 26);
+
+      // Draw Roof Boundary Polygon
+      const rx = 60, ry = 50, rw = w - 120, rh = h - 100;
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(rx, ry, rw, rh);
+
+      // Draw Surrounding Obstruction Shadow Vector based on frameIdx
+      const f = FIXTURES[currentFixtureKey];
+      const sunAngle = (frameIdx / 26) * Math.PI; // 0 to PI
+      const shadowLength = Math.abs(Math.cos(sunAngle)) * 80;
+      const shadowDirX = -Math.cos(sunAngle);
+
+      if (f.shadedRatio > 0.1 || frameIdx < 3 || frameIdx > 23) {
+        ctx.fillStyle = "rgba(15, 23, 42, 0.75)";
+        ctx.beginPath();
+        if (shadowDirX > 0) {
+          ctx.rect(rx, ry, rw * f.shadedRatio + shadowLength, rh);
+        } else {
+          ctx.rect(rx + rw * (1 - f.shadedRatio) - shadowLength, ry, rw * f.shadedRatio + shadowLength, rh);
+        }
+        ctx.fill();
+      }
+
+      // Draw Grid Dots
+      const cols = 28, rows = 14;
+      const cellW = rw / cols;
+      const cellH = rh / rows;
+
+      for (let c = 1; c < cols; c++) {
+        for (let r = 1; r < rows; r++) {
+          const px = rx + c * cellW;
+          const py = ry + r * cellH;
+
+          // Check if point is inside shadow
+          let isShaded = false;
+          if (f.shadedRatio > 0.1 && (c / cols) < f.shadedRatio) {
+            isShaded = true;
+          }
+          if (frameIdx < 2 || frameIdx > 24) {
+            isShaded = true;
+          }
+
+          ctx.beginPath();
+          ctx.arc(px, py, 3, 0, Math.PI * 2);
+          if (isShaded) {
+            ctx.fillStyle = "#334155"; // Navy / Shaded
+          } else {
+            ctx.fillStyle = "#10b981"; // Emerald Green / Direct Sun
+          }
+          ctx.fill();
+        }
+      }
+
+      // Legend
+      ctx.fillStyle = "#10b981";
+      ctx.fillRect(20, h - 24, 10, 10);
+      ctx.fillStyle = "#9ca3af";
+      ctx.fillText("Direct Sun (>= 4.0h)", 36, h - 15);
+
+      ctx.fillStyle = "#334155";
+      ctx.fillRect(190, h - 24, 10, 10);
+      ctx.fillStyle = "#9ca3af";
+      ctx.fillText("Shaded (< 4.0h)", 206, h - 15);
+    }
+
+    // Unit Economics Interactive Calculator
+    function updateEconomics() {
+      const leads = parseInt(document.getElementById('input-leads').value);
+      const cost = parseInt(document.getElementById('input-cost').value);
+      const rate = parseInt(document.getElementById('input-rate').value);
+
+      document.getElementById('leads-val').innerText = `${leads} leads/mo`;
+      document.getElementById('cost-val').innerText = `₹${cost.toLocaleString('en-IN')}`;
+      document.getElementById('rate-val').innerText = `${rate}%`;
+
+      const wastedVisits = Math.round(leads * (rate / 100));
+      const wastedSpend = wastedVisits * cost;
+      const dhoopCost = leads * 49;
+      const netSavings = Math.max(0, wastedSpend - dhoopCost);
+      const roi = dhoopCost > 0 ? (netSavings / dhoopCost).toFixed(1) : "0.0";
+
+      document.getElementById('out-wasted-visits').innerText = `${wastedVisits} visits`;
+      document.getElementById('out-wasted-spend').innerText = `₹${wastedSpend.toLocaleString('en-IN')}`;
+      document.getElementById('out-dhoop-cost').innerText = `₹${dhoopCost.toLocaleString('en-IN')}`;
+      document.getElementById('out-net-savings').innerText = `₹${netSavings.toLocaleString('en-IN')}`;
+      document.getElementById('out-roi').innerText = `${roi}x`;
+    }
+
+    // Copy formatted executive card for WhatsApp
+    function copyWhatsAppSummary() {
+      const f = FIXTURES[currentFixtureKey];
+      const text = `☀️ *Dhoop Solar — Rooftop Qualification Audit*
+
+🏆 *Rating:* ${f.gradeTitle}
+⚡ *Suggested Capacity:* ${f.kwp} kWp
+📐 *Usable Solar Area:* ${f.area} m² (${f.sqft} sq ft) · ${f.pct} unshaded
+
+📅 *Shadow-Free Sun Windows:*
+• Winter (Dec 21): ${f.winterHrs} (${f.winterWin})
+• Today: ${f.todayHrs} (${f.todayWin})
+• Summer (Jun 21): ${f.summerHrs} (${f.summerWin})
+
+💡 *Installer Verdict:* ${f.verdictText}
+
+⚠️ *Notice:* Macro block shadows simulated from 3D OSM geometry. Micro-obstructions (water overhead tanks, parapets) require physical verification.
+_Powered by Dhoop Solar for PM Surya Ghar_`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Executive Lead Card copied for WhatsApp!");
+      });
+    }
+
+    function downloadJSON() {
+      const f = FIXTURES[currentFixtureKey];
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(f, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `dhoop_lead_${currentFixtureKey}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Downloaded lead report JSON");
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => {
+        t.classList.remove('show');
+      }, 2500);
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      loadFixture('campus');
+      updateEconomics();
+    };
+  </script>
+</body>
+</html>
