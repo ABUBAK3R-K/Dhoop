@@ -1,0 +1,256 @@
+{
+  "name": "dhoop-intake",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message", "callback_query"]
+      },
+      "id": "node-tg-trigger",
+      "name": "Receive Telegram update",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [100, 300],
+      "credentials": {
+        "telegramApi": {
+          "id": "dhoop-telegram-cred",
+          "name": "Dhoop Telegram"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.message?.location ? 'pin' : ($json.callback_query?.data?.startsWith('f|') ? 'floor_tap' : ($json.callback_query?.data?.startsWith('c|') ? 'facing_tap' : ($json.message?.text?.startsWith('/') ? 'command' : 'other'))) }}",
+        "rules": {
+          "rules": [
+            { "value2": "pin" },
+            { "value2": "floor_tap" },
+            { "value2": "facing_tap" },
+            { "value2": "command" }
+          ]
+        },
+        "fallbackOutput": 4
+      },
+      "id": "node-route-update",
+      "name": "Route update",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [320, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "Got it. Which floor is the spot on?",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": [
+                { "text": "Ground", "additionalFields": { "callback_data": "=f|0|{{ $json.message.location.latitude.toFixed(5) }}|{{ $json.message.location.longitude.toFixed(5) }}" } },
+                { "text": "2nd", "additionalFields": { "callback_data": "=f|2|{{ $json.message.location.latitude.toFixed(5) }}|{{ $json.message.location.longitude.toFixed(5) }}" } }
+              ]
+            },
+            {
+              "row": [
+                { "text": "5th", "additionalFields": { "callback_data": "=f|5|{{ $json.message.location.latitude.toFixed(5) }}|{{ $json.message.location.longitude.toFixed(5) }}" } },
+                { "text": "10th", "additionalFields": { "callback_data": "=f|10|{{ $json.message.location.latitude.toFixed(5) }}|{{ $json.message.location.longitude.toFixed(5) }}" } }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "node-ask-floor",
+      "name": "Ask floor",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [560, 100],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const parts = $json.callback_query.data.split('|');\nreturn { floor: parts[1], lat: parts[2], lon: parts[3], callback_query: $json.callback_query };"
+      },
+      "id": "node-parse-floor",
+      "name": "Parse floor tap",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [560, 240]
+    },
+    {
+      "parameters": {
+        "operation": "answerCallbackQuery",
+        "queryId": "={{ $json.callback_query.id }}"
+      },
+      "id": "node-ack-floor",
+      "name": "Ack floor tap",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [760, 240],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Parse floor tap').item.json.callback_query.message.chat.id }}",
+        "text": "Thanks. Which direction does the window or balcony face?",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": [
+                { "text": "N", "additionalFields": { "callback_data": "=c|{{ $('Parse floor tap').item.json.floor }}|N|{{ $('Parse floor tap').item.json.lat }}|{{ $('Parse floor tap').item.json.lon }}" } },
+                { "text": "E", "additionalFields": { "callback_data": "=c|{{ $('Parse floor tap').item.json.floor }}|E|{{ $('Parse floor tap').item.json.lat }}|{{ $('Parse floor tap').item.json.lon }}" } },
+                { "text": "S", "additionalFields": { "callback_data": "=c|{{ $('Parse floor tap').item.json.floor }}|S|{{ $('Parse floor tap').item.json.lat }}|{{ $('Parse floor tap').item.json.lon }}" } }
+              ]
+            },
+            {
+              "row": [
+                { "text": "W", "additionalFields": { "callback_data": "=c|{{ $('Parse floor tap').item.json.floor }}|W|{{ $('Parse floor tap').item.json.lat }}|{{ $('Parse floor tap').item.json.lon }}" } },
+                { "text": "Not sure", "additionalFields": { "callback_data": "=c|{{ $('Parse floor tap').item.json.floor }}|ANY|{{ $('Parse floor tap').item.json.lat }}|{{ $('Parse floor tap').item.json.lon }}" } }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "node-ask-facing",
+      "name": "Ask facing",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [960, 240],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const parts = $json.callback_query.data.split('|');\nreturn { floor: parts[1], facing: parts[2], lat: parts[3], lon: parts[4], callback_query: $json.callback_query };"
+      },
+      "id": "node-parse-facing",
+      "name": "Parse facing tap",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [560, 400]
+    },
+    {
+      "parameters": {
+        "operation": "answerCallbackQuery",
+        "queryId": "={{ $json.callback_query.id }}"
+      },
+      "id": "node-ack-facing",
+      "name": "Ack facing tap",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [760, 400],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $('Parse facing tap').item.json.callback_query.message.chat.id }}",
+        "action": "upload_video"
+      },
+      "id": "node-show-working",
+      "name": "Show working status",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [960, 400],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://worker:8000/v1/jobs",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"lat\": {{ Number($('Parse facing tap').item.json.lat) }},\n  \"lon\": {{ Number($('Parse facing tap').item.json.lon) }},\n  \"floor\": {{ Number($('Parse facing tap').item.json.floor) }},\n  \"facing\": \"{{ $('Parse facing tap').item.json.facing }}\",\n  \"callback_url\": \"http://n8n:5678/webhook/dhoop-result\",\n  \"meta\": {\n    \"chat_id\": {{ $('Parse facing tap').item.json.callback_query.message.chat.id }},\n    \"lang\": \"{{ $('Parse facing tap').item.json.callback_query.from.language_code || 'en' }}\"\n  }\n}"
+      },
+      "id": "node-enqueue-render",
+      "name": "Enqueue render",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1160, 400]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Parse facing tap').item.json.callback_query.message.chat.id }}",
+        "text": "Rendering the shadows for your spot. This takes about a minute."
+      },
+      "id": "node-tell-queued",
+      "name": "Tell user queued",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1360, 400],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "parseMode": "HTML",
+        "text": "={{ $json.message.text === '/start' ? \"Hi, I'm <b>Dhoop</b> (धूप). I check how much <i>direct sunlight</i> a spot really gets.\\nSend me a location: tap 📎 → <b>Location</b> → pick the spot.\" : ($json.message.text === '/about' ? \"I load nearby buildings from OpenStreetMap, place the sun for each 5 minutes of the day, and trace a ray from your spot toward the sun. If a building blocks it, it's shade. A window only counts sun that is in front of it.\\nHeights missing in OSM are estimated from neighbours and flagged in the confidence line.\" : \"1) Send a location pin. 2) Pick the floor. 3) Pick the direction the window or balcony faces.\\nI reply with a shadow time-lapse and sun-hours for today, Dec 21 and Jun 21. /about explains how it works.\") }}"
+      },
+      "id": "node-handle-command",
+      "name": "Handle command",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [560, 560],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "Send me a location pin (📎 → Location) and I'll check the sunlight."
+      },
+      "id": "node-nudge-pin",
+      "name": "Nudge for a pin",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [560, 700],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    }
+  ],
+  "connections": {
+    "Receive Telegram update": {
+      "main": [[{ "node": "Route update", "type": "main", "index": 0 }]]
+    },
+    "Route update": {
+      "main": [
+        [{ "node": "Ask floor", "type": "main", "index": 0 }],
+        [{ "node": "Parse floor tap", "type": "main", "index": 0 }],
+        [{ "node": "Parse facing tap", "type": "main", "index": 0 }],
+        [{ "node": "Handle command", "type": "main", "index": 0 }],
+        [{ "node": "Nudge for a pin", "type": "main", "index": 0 }]
+      ]
+    },
+    "Parse floor tap": {
+      "main": [[{ "node": "Ack floor tap", "type": "main", "index": 0 }]]
+    },
+    "Ack floor tap": {
+      "main": [[{ "node": "Ask facing", "type": "main", "index": 0 }]]
+    },
+    "Parse facing tap": {
+      "main": [[{ "node": "Ack facing tap", "type": "main", "index": 0 }]]
+    },
+    "Ack facing tap": {
+      "main": [[{ "node": "Show working status", "type": "main", "index": 0 }]]
+    },
+    "Show working status": {
+      "main": [[{ "node": "Enqueue render", "type": "main", "index": 0 }]]
+    },
+    "Enqueue render": {
+      "main": [[{ "node": "Tell user queued", "type": "main", "index": 0 }]]
+    }
+  }
+}

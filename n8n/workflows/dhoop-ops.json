@@ -1,0 +1,33 @@
+{
+  "name": "dhoop-ops",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "node-error-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.ADMIN_CHAT_ID || '123456789' }}",
+        "text": "=🚨 <b>Dhoop Alert</b>\nWorkflow: {{ $json.workflow.name }}\nNode: {{ $json.execution.error.node.name }}\nMessage: {{ $json.execution.error.message }}\nExecution: {{ $json.execution.id }}",
+        "parseMode": "HTML"
+      },
+      "id": "node-alert-admin",
+      "name": "Alert admin",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [340, 300],
+      "credentials": {
+        "telegramApi": { "id": "dhoop-telegram-cred", "name": "Dhoop Telegram" }
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [[{ "node": "Alert admin", "type": "main", "index": 0 }]]
+    }
+  }
+}
