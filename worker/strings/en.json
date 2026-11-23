@@ -1,0 +1,14 @@
+{
+  "start": "Welcome to <b>Dhoop Solar</b> (धूप Solar) ☀️\nAutomated rooftop shade qualification for solar installers and PM Surya Ghar applicants.\nSend me a location pin: tap 📎 → <b>Location</b> → pick the spot.",
+  "help": "1) Send a location pin on the building. 2) I identify the roof and ray-cast seasonal sun exposure across a 1.5 m grid. 3) You get back usable roof area (m² / sq ft), suggested capacity (kWp), Rooftop Grade (A–D), and a 3D shadow time-lapse. /about explains how it works.",
+  "about": "<b>Dhoop Solar</b> calculates rooftop solar viability by ray-casting sun positions across a 1.5 m rooftop grid against surrounding OpenStreetMap 3D buildings.\nIt reports Grade A–D rating, unshaded usable roof area, and suggested system capacity.\n<i>Note: Micro-obstructions like water tanks and parapets are confirmed during physical site inspection.</i>",
+  "working": "Simulating seasonal shadows over rooftop grid… (~45 s)",
+  "video_caption": "Rooftop Solar Rating: Grade {grade} ({grade_title}) · {kwp} kWp suggested capacity.",
+  "not_modelled": "<i>Macro block shadows simulated from 3D map data. Rooftop water tanks, parapets, stair-heads, and trees require physical site verification.</i>",
+  "attribution": "Data © OpenStreetMap contributors · Dhoop Solar",
+  "no_sun": "No direct sun",
+  "limit_exceeded": "You've hit the limit of 5 checks per hour. Try again a bit later.",
+  "overpass_busy": "The map data service is busy. I'll retry in a moment.",
+  "no_buildings": "I couldn't find buildings near that pin to evaluate rooftop shade. Try dropping the pin right on the building.",
+  "render_failed_notice": "3D video unavailable this time. Solar qualification numbers below are still valid."
+}
